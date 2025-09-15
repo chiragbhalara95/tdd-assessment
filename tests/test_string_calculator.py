@@ -32,3 +32,11 @@ def test_negative_raises_exception_and_lists_all():
         calc.add("2,-4,3,-5")
     msg = str(exc.value)
     assert "-4" in msg and "-5" in msg
+
+def test_custom_multi_char_delimiter_brackets():
+    # Multi-character delimiter in brackets
+    assert calc.add("//[***]\n1***2***3") == 6
+
+def test_multiple_bracketed_delimiters():
+    # Bonus: multiple delimiters like //[delim1][delim2]
+    assert calc.add("//[*][%]\n1*2%3") == 6
